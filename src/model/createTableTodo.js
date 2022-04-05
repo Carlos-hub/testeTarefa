@@ -18,8 +18,43 @@ const colunas = {
         allowNull:false,
         fields:'nome_colaborador'
     },
-    criado:{
+    datacriacao:{
+        type:Sequelize.DATE,
+        allowNull:false
+    },
+    categoria:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    protocolo:{
+        type:Sequelize.STRING,
+        allowNull:true
+    },
+    trello:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    descricao:{
+        type:Sequelize.TEXT,
+        allowNull:false
+    },
+    status:{
+        type:Sequelize.ENUM(['Pendente', 'Em andamento','Concluído']),
+        allowNull:true
+    },
+    datafinalizacao:{
         type:Sequelize.DATE,
         allowNull:false
     }
+
 }
+const tarefas = {
+    freezeTablename: true,
+    tableName: 'tarefas',
+    timestamps: true,
+    createdAt: 'dataCriacao',
+    updatedAt: 'dataAtualizacao',
+    version: 'versao'
+}
+
+module.exports = instancia.define('tarefa', colunas, opcoes)
